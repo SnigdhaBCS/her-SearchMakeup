@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+  --bg-color: #110c0c;
+  --card-bg: #1a1313;
+  --text-main: #f3eae8;
+  --text-muted: #8b7d7b;
+  --accent-pink: #f2b5be;
+  --accent-pink-hover: #e8a2ac;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  max-width: 800px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* Page Wrapper */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Heading style */
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--accent-pink);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(242, 181, 190, 0.15);
+}
+
+/* Card container */
+.search-card {
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid rgba(242, 181, 190, 0.08);
+  border-radius: 40px;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Input container with search icon */
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: 1px solid rgba(139, 125, 123, 0.3);
+  border-radius: 20px;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.search-input:focus {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 8px rgba(242, 181, 190, 0.2);
+}
+
+/* Go button */
+.go-button {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--accent-pink);
+  color: #1e1113;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  padding: 1.1rem 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(242, 181, 190, 0.25);
+}
+
+.go-button:hover {
+  background-color: var(--accent-pink-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(242, 181, 190, 0.35);
+}
+
+.go-button:active {
+  transform: translateY(0);
+}
+
+/* Results container */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2.2rem;
+  margin-top: 1rem;
+}
+
+.result-item {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text-main);
+  opacity: 0.95;
+  transition: all 0.3s ease;
+  cursor: default;
+  text-align: center;
+}
+
+.result-item:hover {
+  color: var(--accent-pink);
+  transform: scale(1.05);
+}
+
+/* Back button */
+.back-button {
+  margin-top: 3.5rem;
+  background: transparent;
+  border: 1px solid rgba(242, 181, 190, 0.3);
+  color: var(--accent-pink);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(242, 181, 190, 0.08);
+  border-color: var(--accent-pink);
+}
+
+/* No results / Initial info */
+.info-text {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
