@@ -9,7 +9,7 @@ const Makeup = () => {
   // Search query state
   const [query, setQuery] = useState('');
   
-  // Search results state
+  // Search results state---multiple results will be there so result state is is array
   const [results, setResults] = useState([]);
   
   // Loading and error states
@@ -25,7 +25,7 @@ const Makeup = () => {
       // Fetch matching companies from the backend Flask server
       const response = await fetch(`http://127.0.0.1:5000/api/search?q=${encodeURIComponent(query)}`);
       
-      if (!response.ok) {
+      if (!response.ok) {   //checks if flask reponses in 200 or 404/500 etc.
         throw new Error('Failed to fetch data from the server');
       }
       

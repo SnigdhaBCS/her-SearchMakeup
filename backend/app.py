@@ -1,7 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify       
+#Request--- Allows Flask to read data sent by React.
+#Jsonify---Python objects into JSON for react
 from flask_cors import CORS
+#CORS is used for letting react and flask talk.
+#FLASK AND REACT has different servers Bbrowser can blovk them... this is called SAME ORIGIN POLICY
 import sqlite3
 import os
+
 
 app = Flask(__name__)
 # Enable CORS for requests from the React application

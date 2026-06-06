@@ -9,14 +9,18 @@ def init_database():
     cursor = conn.cursor()
     
     # Create companies table
+    #AUTOINCREMENT- auto. generate IDs, we dont do it manually.
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS companies (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
             name TEXT NOT NULL UNIQUE
         )
     ''')
     
     # Create products table
+    #relationship between two tables, id (from companies table) 
+    # and companies_id (foreign key)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,10 +36,10 @@ def init_database():
     
     # Sample companies
     companies = [
-        ("Velvet Nebula",),
-        ("Ethereal Bloom",),
-        ("Astro Glaze",),
-        ("Chroma Core",)
+        ("MARS",),
+        ("HUDA",),
+        ("SWISS BEAUTY",),
+        ("LAKME",)
     ]
     
     cursor.executemany('INSERT INTO companies (name) VALUES (?)', companies)
@@ -47,29 +51,29 @@ def init_database():
     
     # Sample products linked to companies
     products = [
-        # Velvet Nebula
-        ("lipstick", company_map["Velvet Nebula"]),
-        ("eyeshadow", company_map["Velvet Nebula"]),
-        ("mascara", company_map["Velvet Nebula"]),
-        ("shades", company_map["Velvet Nebula"]),
+        # MARS
+        ("lipstick", company_map["MARS"]),
+        ("eyeshadow", company_map["MARS"]),
+        ("mascara", company_map["MARS"]),
+        ("foundation", company_map["MARS"]),
         
         # Ethereal Bloom
-        ("blush", company_map["Ethereal Bloom"]),
-        ("foundation", company_map["Ethereal Bloom"]),
-        ("concealer", company_map["Ethereal Bloom"]),
-        ("shades", company_map["Ethereal Bloom"]),
+        ("blush", company_map["HUDA"]),
+        ("foundation", company_map["HUDA"]),
+        ("concealer", company_map["HUDA"]),
+        ("lipgloss", company_map["HUDA"]),
         
         # Astro Glaze
-        ("lip gloss", company_map["Astro Glaze"]),
-        ("highlighter", company_map["Astro Glaze"]),
-        ("eyeshadow", company_map["Astro Glaze"]),
-        ("shades", company_map["Astro Glaze"]),
+        ("lip gloss", company_map["SWISS BEAUTY"]),
+        ("highlighter", company_map["SWISS BEAUTY"]),
+        ("eyeshadow", company_map["SWISS BEAUTY"]),
+        ("shades", company_map["SWISS BEAUTY"]),
         
         # Chroma Core
-        ("eyeliner", company_map["Chroma Core"]),
-        ("mascara", company_map["Chroma Core"]),
-        ("lipstick", company_map["Chroma Core"]),
-        ("shades", company_map["Chroma Core"])
+        ("eyeliner", company_map["LAKME"]),
+        ("mascara", company_map["LAKME"]),
+        ("lipstick", company_map["LAKME"]),
+        ("shades", company_map["LAKME"])
     ]
     
     cursor.executemany('INSERT INTO products (name, company_id) VALUES (?, ?)', products)
@@ -77,7 +81,7 @@ def init_database():
     # Commit changes and close
     conn.commit()
     conn.close()
-    print("Database initialized successfully with sample data!")
+    print("Database initialized successfully with data!")
 
 if __name__ == '__main__':
     init_database()

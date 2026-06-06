@@ -1,17 +1,24 @@
 import React from 'react';
 
+//search is recieving 3 things from its parent Makeup----query,setQuery and handleSearch
+//this is props destructuring
 const Search = ({ query, setQuery, onSearch }) => {
-  const handleSubmit = (e) => {
+  //e is Event Object
+  const handleSubmit = (e) => {  
+  // When the user submits the form, 
+  // React automatically creates an object containing information about that event.
     e.preventDefault();
     onSearch();
   };
+//SVG----Scalable Vector Graphic
+//every keystrock updates state
 
   return (
     <div className="page-container">
       <h1 className="brand-title">Her-Search Makeup</h1>
       
       <form onSubmit={handleSubmit} className="search-card">
-        <div className="search-input-wrapper">
+        <div className="search-input-wrapper"> 
           <svg
             className="search-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +36,7 @@ const Search = ({ query, setQuery, onSearch }) => {
           <input
             type="text"
             className="search-input"
-            placeholder="Search shades, brands..."
+            placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
