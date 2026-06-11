@@ -19,6 +19,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+
 @app.route('/api/search', methods=['GET'])
 def search_companies():
     query = request.args.get('q', '').strip().lower()
